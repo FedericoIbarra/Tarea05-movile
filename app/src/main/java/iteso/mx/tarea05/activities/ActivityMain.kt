@@ -2,7 +2,12 @@ package iteso.mx.tarea05.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
+import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import iteso.mx.tarea05.R
+import org.jetbrains.anko.find
+import java.nio.file.Files.find
 
 class ActivityMain : AppCompatActivity() {
 
@@ -29,5 +34,20 @@ class ActivityMain : AppCompatActivity() {
         3.- Profile
         Create FragmentProfile
          */
+
+        var menu = find<View>(R.id.bmn)
+
+    }
+
+    fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+           /*
+            R.id.home -> supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.activity_main_fl_main_content, )
+            */
+        }
+
+        return true
     }
 }

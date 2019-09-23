@@ -14,7 +14,11 @@
         <!-- TODO Implement Parse in Application -->
         <activity android:name=".activities.ActivityMain"></activity>
         <activity android:name=".activities.ActivityTutorial" />
-        <activity android:name=".activities.ActivityLogin" />
+        <activity android:name=".activities.ActivityLogin"
+        android:screenOrientation="portrait"
+        />
+
+        <activity android:name=".activities.ActivityRegister"/>
         <activity android:name=".activities.ActivityStart">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

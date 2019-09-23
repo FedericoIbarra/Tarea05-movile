@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".activities.ActivityMain">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bmn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottomnm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/bmn"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
