@@ -15,8 +15,9 @@
         />
 
     <FrameLayout
+        android:id="@+id/frame_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@id/bmn"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

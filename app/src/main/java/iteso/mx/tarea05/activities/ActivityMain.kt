@@ -2,14 +2,23 @@ package iteso.mx.tarea05.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationMenu
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import iteso.mx.tarea05.R
+import iteso.mx.tarea05.fragments.FragmentHome
+import iteso.mx.tarea05.fragments.FragmentRecipies
+import iteso.mx.tarea05.fragments.FragmentTutorial1
+import iteso.mx.tarea05.presenters.HomePresenter
 import org.jetbrains.anko.find
 import java.nio.file.Files.find
 
 class ActivityMain : AppCompatActivity() {
+
+    lateinit var menu: BottomNavigationView
+    val presenter = HomePresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,19 +44,44 @@ class ActivityMain : AppCompatActivity() {
         Create FragmentProfile
          */
 
-        var menu = find<View>(R.id.bmn)
+        menu = findViewById(R.id.bmn)
+        menu.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        menu.setSelectedItemId(R.id.home)
+
 
     }
 
-    fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-           /*
-            R.id.home -> supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.activity_main_fl_main_content, )
-            */
+
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.home -> {
+                Log.d("home", "Home")
+
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frame_main, FragmentHome())
+                    .commit()
+            }
+
+            R.id.profile -> {
+                Log.d("home", "profile")
+            }
+            R.id.recipies -> {
+                Log.d("home", "recipies")
+
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frame_main, FragmentRecipies())
+                    .commit()
+            }
         }
-
-        return true
+        false
     }
+
+    fun refreshFun (view: View) {
+        presenter.fetchInfo()
+    }
+
+
 }
