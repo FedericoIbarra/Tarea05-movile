@@ -9,10 +9,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import iteso.mx.tarea05.R
 import iteso.mx.tarea05.fragments.FragmentHome
+import iteso.mx.tarea05.fragments.FragmentProfile
 import iteso.mx.tarea05.fragments.FragmentRecipies
 import iteso.mx.tarea05.fragments.FragmentTutorial1
 import iteso.mx.tarea05.presenters.HomePresenter
 import org.jetbrains.anko.find
+import org.jetbrains.anko.startActivity
 import java.nio.file.Files.find
 
 class ActivityMain : AppCompatActivity() {
@@ -66,6 +68,11 @@ class ActivityMain : AppCompatActivity() {
 
             R.id.profile -> {
                 Log.d("home", "profile")
+
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frame_main, FragmentProfile())
+                    .commit()
             }
             R.id.recipies -> {
                 Log.d("home", "recipies")
@@ -79,8 +86,12 @@ class ActivityMain : AppCompatActivity() {
         false
     }
 
-    fun refreshFun (view: View) {
+    fun refreshFun (view: View?) {
         presenter.fetchInfo()
+    }
+
+    fun cerrarSesion(view: View?) {
+        startActivity<ActivityStart>()
     }
 
 
